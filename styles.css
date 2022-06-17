@@ -11,7 +11,7 @@ html, body {
   align-items: center;
 }
 
-main {
+.calculator {
   border: 5px solid black;
   height: 500px;
   width: 400px;
@@ -50,5 +50,7 @@ main {
   font-size: 30px;
   font-weight: bold;
 }
+
+
 
 
