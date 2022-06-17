@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calculator</title>
+    <meta name="description" content="Online calculator">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="main">
+      <div class="calculator">
+        <!-- screen -->
+        <div class="screen">
+          <div class="screen-current" id="currentOperationScreen"></div>
+          <div class="screen-last" id="lastOperationScreen">0</div>
+        </div>
+        <!-- buttons -->
+        <div class="buttons-grid">
+
+          <button class="btn btn-red" onClick="console.log('hey');" id="clearBtn">AC</button>
+          <button class="btn btn-red" onClick="console.log('hey');" id="deleteBtn">⌫</button>
+          <button class="btn" onClick="console.log('hey');" id="percentBtn">%</button>
+          <button class="btn btn-blue" onClick="console.log('hey');" id="equalsBtn">=</button>
+
+          <button class="btn" onClick="console.log('hey');" data-number>7</button>
+          <button class="btn" onClick="console.log('hey');" data-number>8</button>
+          <button class="btn" onClick="console.log('hey');" data-number>9</button>
+          <button class="btn btn-orange" onClick="console.log('hey');" data-operator>+</button>
+
+          <button class="btn" onClick="console.log('hey');" data-number>4</button>
+          <button class="btn" onClick="console.log('hey');" data-number>5</button>
+          <button class="btn" onClick="console.log('hey');" data-number>6</button>
+          <button class="btn btn-orange" onClick="console.log('hey');" data-operator>-</button>
+
+          <button class="btn" onClick="console.log('hey');" data-number>1</button>
+          <button class="btn" onClick="console.log('hey');" data-number>2</button>
+          <button class="btn" onClick="console.log('hey');" data-number>3</button>
+          <button class="btn btn-orange" onClick="console.log('hey');" data-operator>÷</button>
+
+          <button class="btn" onClick="console.log('hey');" id="pointBtn">.</button>
+          <button class="btn" onClick="console.log('hey');" data-number>0</button>
+          <button class="btn" onClick="console.log('hey');" id="signBtn">+/-</button>
+          <button class="btn btn-orange" onClick="console.log('hey');" data-operator>*</button>
+
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
