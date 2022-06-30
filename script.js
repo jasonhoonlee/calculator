@@ -12,6 +12,7 @@ let lastButton = null;
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operator]');
 
+
 const percentButton = document.getElementById('percentBtn');
 const pointButton = document.getElementById('pointBtn');
 const signButton = document.getElementById('signBtn');
@@ -24,13 +25,13 @@ const lastOperationScreen = document.getElementById('lastOperationScreen');
 
 
 
-
 numberButtons.forEach((button) => {
   button.addEventListener('click',() => appendNumber(button.textContent));
 })
 operationButtons.forEach((button) => {
   button.addEventListener('click', () => setOperation(button.textContent));
 })
+
 
 equalsButton.addEventListener('click', () => calculateOperation());
 pointButton.addEventListener('click', () => addDecimal());
@@ -39,6 +40,10 @@ signButton.addEventListener('click', () => changeSign());
 
 clearButton.addEventListener('click', () => clearScreen());
 deleteButton.addEventListener('click', () => deleteScreen());
+
+
+document.addEventListener('keyup', (e) => supportKeys(e));
+
 
 
 
@@ -251,13 +256,60 @@ const deleteScreen = function() {
 
 
 
+
+const supportKeys = function(e) {
+
+  const keyCode = e.keyCode;
+  const key = e.key;
+
+  //if key is a number
+  const numbers = ['0','1','2','3','4','5','6','7','8','9'];
+  const keyIsANumber = numbers.some(number => number === key)
+  if (keyIsANumber) {
+    if (e.shiftKey === false) appendNumber(key);
+    return;
+  }
+
+  //if key is a operator
+  const operators = ['/', '+', '-', 'x'];
+  const keyIsAnOperator = operators.some(operator => key === operator);
+  if (keyIsAnOperator) {
+     setOperation(key);
+     return;
+  }
+
+  //if key is a special operator
+  const specialOperators = ['c', 'Backspace', 'v', 'p', '.'];
+  const keyIsSpecialOperator = specialOperators.some(specialOperator => key === specialOperator);
+  if (keyIsSpecialOperator) {
+    if (key === '.') addDecimal();
+    if (key === 'p') convertPercentage();
+    if (key === 'v') changeSign();
+    if (key === 'c') clearScreen();
+    if (key === 'Backspace') deleteScreen();
+    return;
+  }
+
+  //if key is equal
+  if (key === '=' || key === 'Enter') {
+    calculateOperation();
+    return;
+  }
+
+}
+
+
+
+
+
+
 const evaluate = function(operator) {
   let result;
 
   if (operator === '+') result = add(Number(operand1), Number(operand2));
   if (operator === '-') result = subtract(Number(operand1), Number(operand2));
-  if (operator === '*') result = multiply(Number(operand1), Number(operand2));
-  if (operator === '÷') result = divide(Number(operand1), Number(operand2));
+  if (operator === 'x') result = multiply(Number(operand1), Number(operand2));
+  if (operator === '/') result = divide(Number(operand1), Number(operand2));
 
   if (result % 1 !== 0) return String(result.toFixed(2));
   else return String(result);
